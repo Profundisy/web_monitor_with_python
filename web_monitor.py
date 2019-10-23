@@ -115,15 +115,8 @@ def main(name,url):
 
 if __name__ == "__main__":
 
-    main('web1','https://www.jrjr.com')
-    main('web2','https://zhibo.jrjr.com/room/')
-    main('web3','https://login.jrjr.com')
-    main('web4','https://www.wzg.com')
-    main('web5','https://runyixs.com')
-    #取消注释即可
-    #main('test_404','http://103.75.0.200/test1.html')
-    #stop nginx
-    main('test_refuse','http://103.75.0.200:12080/test.html')
+    main('web1','https://baidu.com')
+   
     
     
 
