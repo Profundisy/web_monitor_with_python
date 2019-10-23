@@ -43,9 +43,6 @@ class Monitor():
             #print(self.url +" "+"without cert")
             requests.urllib3.disable_warnings()
             response = requests.request('GET',self.url,stream=True,headers=header,verify=False)
-
-
-        
         return response.status_code
 
     def monitor_web(self,url):
@@ -57,8 +54,6 @@ class Monitor():
             
             try:
                 self.statu_code = self.get_code(self.url)
-
-
             except requests.exceptions.ConnectionError:
                 #print(self.statu_code)
                 print(self.url +" 连接被拒绝")
@@ -76,13 +71,10 @@ class Monitor():
 
     def baojin(self):
         '''报警'''
-        #global threshold
-        #global time_con
         if self.threshold >= 4:
             time_difference = max(self.time_con) - min(self.time_con)
             print(time_difference)
             if time_difference <= 60:
-                
                 ###报警
                 print('报警!!!!!!!'+" "+self.url)
                 client.send_msg("%s 网页不能访问,statu_code = %s"% (self.url,self.statu_code))
@@ -98,10 +90,8 @@ class Monitor():
 
 
 def run_proc(web_name,url):
-
     web_name = Monitor(url)
     while True:
-        
         print(web_name.url+"监测中")
         web_name.statu_code = web_name.monitor_web(url)
         web_name.threshold+=1
@@ -114,14 +104,5 @@ def main(name,url):
     name.start()
 
 if __name__ == "__main__":
-
     main('web1','https://baidu.com')
-   
-    
-    
-
-
-
-
-
 
