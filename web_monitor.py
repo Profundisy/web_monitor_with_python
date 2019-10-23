@@ -35,14 +35,14 @@ class Monitor():
         #response = requests.request('GET',self.url,headers=header)
         
         try:
-            response = requests.request('GET',self.url,headers=header)
+            response = requests.request('GET',self.url,stream=True,headers=header)
 
         #如果证书认证失败则去掉验证
         except requests.exceptions.SSLError:
             #调试不支持证书认证的网址
             #print(self.url +" "+"without cert")
             requests.urllib3.disable_warnings()
-            response = requests.request('GET',self.url,headers=header,verify=False)
+            response = requests.request('GET',self.url,stream=True,headers=header,verify=False)
 
 
         
